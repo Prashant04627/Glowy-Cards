@@ -1,0 +1,64 @@
+body{
+    background-color: #161618;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+#card-container{
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    background-color: rgba(255,255,255,0.1);
+    height: 200px;
+    width: 300px;
+    border: 1px solid #28282c;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    
+}
+.card::before,
+.card::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255,255,255,0.06),
+        transparent 30%
+    );
+    z-index: 3;
+    border-radius: inherit;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 500ms;
+}
+.card:hover::before{
+    opacity: 1;
+}
+.card-inner{
+    position: absolute;
+    inset: 1px;
+    background-color: #161618;
+    border-radius: inherit;
+    z-index: 2;
+
+}
+.card::after{
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255,255,255,0.2),
+        transparent 30%
+    );
+    z-index: 1;
+}
+#card-container:hover > .card::after{
+    opacity: 1;
+}
